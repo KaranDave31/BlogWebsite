@@ -15,6 +15,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: black;
 }
 
 nav ul {
@@ -53,33 +54,14 @@ nav ul.right-links {
 }
 
 
-/*Search bar*/
-#searchbar{
-    width: 100%;
-    padding: 7px;
-    font-size: 16px;
-    border: 2px solid #ccc;
-    border-radius: 6px;
-    outline: none;
-    background-color: #f0f0f0;
-    cursor: pointer;
-    transition: 0.3s;
+.title{
+    font-size: 36px;
+    color: white;
     text-align: center;
+    padding: 20px;
+    font-weight: bold;
+    font-family: 'Brush Script MT', cursive;     
 }
-
-#searchbar:empty:before {
-    content: attr(placeholder);
-    color: #aaa;
-   }
-   
-#searchbar:hover {
-    background-color: #e5e5e5;
-   }
-   
-#searchbar:focus {
-    border-color: #6e8db3;
-    box-shadow: 0 0 5px #6e8db3;
-   }
 
 
 /* Dropdown list for my account*/
@@ -115,7 +97,7 @@ nav ul.right-links {
 
 /*Parllax effect*/
 .parallax {
-    height: 600px;
+    height: 1000px;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -123,9 +105,25 @@ nav ul.right-links {
 }
 
 #parallax1 {
-    background-image: url('');
+    background-image: url('/images/parallax1.png');
 }
 
 #parallax2 {
-    background-image: url('');
+    background-image: url('/images/parallax2.png');
 }
+
+#parallax3 {
+    background-image: url('/images/parallax3.png')
+}
+
+#parallax4 {
+    background-image: url('/images/parallax4.png')
+}
+
+
+#content { 
+    height: 400px;
+    position: relative; 
+    color: white; 
+    text-align: center; 
+} 
