@@ -1,0 +1,233 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Verdana', sans-serif;
+    background: radial-gradient(circle, rgb(60, 60, 61) 0%, rgb(0, 0, 0) 100%);
+}
+
+/*Navbar css*/
+nav {
+    position: sticky;
+    top:0;
+    width: 100%;
+    z-index: 1000;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin: 0 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #fff;
+}
+
+nav ul.left-links {
+    justify-content: flex-start;
+    padding-left: 2%;
+}
+
+nav ul.middle-links {
+    justify-content: center;
+}
+
+nav ul.right-links {
+    justify-content: flex-end;
+    padding-right: 2%;
+}
+
+
+.title{
+    font-size: 36px;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-weight: bold;
+    font-family: 'Brush Script MT', cursive;     
+}
+
+
+/* Dropdown list for my account*/
+.dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+
+/*Parllax effect*/
+.parallax {
+    height: 1000px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#parallax1 {
+    background-image: url('/images/parallax1.png');
+}
+
+#parallax2 {
+    background-image: url('/images/parallax2.png');
+}
+
+#parallax3 {
+    background-image: url('/images/parallax3.png')
+}
+
+#parallax4 {
+    background-image: url('/images/parallax4.png')
+}
+
+
+#content { 
+    height: 400px;
+    position: relative; 
+    color: white; 
+    text-align: center; 
+} 
+
+
+
+/*Search bar
+#searchbar{
+    width: 100%;
+    padding: 7px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+}
+
+#searchbar:empty:before {
+    content: attr(placeholder);
+    color: #aaa;
+   }
+   
+#searchbar:hover {
+    background-color: #e5e5e5;
+   }
+   
+#searchbar:focus {
+    border-color: #6e8db3;
+    box-shadow: 0 0 5px #6e8db3;
+   }
+*/
+
+
+/*Signup Page*/
+
+.container {
+  width: 100%;
+  display: flex;
+  padding-top: 100px;
+  padding-bottom: 200px;
+  justify-content: center;
+
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+  width: 700px;
+  height: 500px;
+  background-color: #ffffff;
+  padding: 10px 30px;
+}
+
+.card_title {
+  text-align: center;
+  padding: 10px;
+}
+
+.card_title h1 {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.form input {
+  margin: 10px 0;
+  width: 100%;
+  background-color: #e2e2e2;
+  border: none;
+  outline: none;
+  padding: 12px 5px;
+  border-radius: 4px;
+}
+
+.form button {
+  background-color: #4796ff;
+  color: #ffffff;
+  font-size: 16px;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  padding: 8px 15px;
+  width: 100%;
+}
+
+.card_terms {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.card_terms input[type="checkbox"] {
+  background-color: #e2e2e2;
+}
+
+.card_terms span {
+  margin: 5px;
+  font-size: 13px;
+}
+
+.card a {
+  color: #4796ff;
+  text-decoration: none;
+}
+
