@@ -1,9 +1,13 @@
+//express server
+
 // console.log("Hello worlds");
 
 require('dotenv').config();
 
 const exp = require("constants");
 const path = require("path");
+
+
 const express = require("express");
 const expressLayout = require('express-ejs-layouts');
 
@@ -18,11 +22,8 @@ app.set('view engine' ,'ejs');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use('/', require('./server/routes/main'));
+app.use('/', require('./server/routes/main'));
 
-app.get('', (req,res) => {
-    res.sendFile(path.join(__dirname, 'index.html')); 
-});
 
 
 
