@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/index.css">
-    <title>Paneer Posting</title>
+    <title><%- locals.title -%></title>
 </head>
 <body>
 
@@ -27,6 +27,9 @@
             </div>
         </li>       
         <li><a href="myprofile">Settings</a></li> 
+        <form action="/search" role="search" method="post" >
+            <input type="search" name="" id="searchInput" placeholder="Type here">
+        </form>
     </ul>        
     </nav>
     
