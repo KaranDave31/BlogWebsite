@@ -50,11 +50,48 @@ router.post('/signup', (req, res) => {
 
 
 router.get('/blog',(req,res) => {
-    res.render('blog');
+    connection.query('SELECT * FROM Posts', (error, results, fields) => {
+        if (error) {
+            console.error('Error retrieving posts:', error);
+            res.status(500).send('Error retrieving posts');
+            return;
+        }
+        res.render('blog', { posts: results,layout: false }); // Render the blog EJS file and pass posts data
+    });
 });
 
+
+
+router.get('/posting',(req,res) => {
+  res.render('posting', { layout: false});
+});
+
+router.post('/posting', (req, res) => {
+  const { postTitle, postContent } = req.body;
+
+  if (!postContent) {
+      return res.status(400).send('Content cannot be empty');
+  }
+
+  // Insert the new post into the database
+  const query = 'INSERT INTO Posts (title, content) VALUES (?, ?)';
+  connection.query(query, [postTitle, postContent], (error, results, fields) => {
+      if (error) {
+          console.error('Error creating post:', error);
+          return res.status(500).send('Error creating post');
+      }
+      console.log('Post created successfully');
+
+      // Redirect to the blog page
+      res.redirect('/blog'); // Assuming '/blog' is the route for the blog page
+  });
+});
+
+
+
 router.get('/myprofile',(req,res) => {
-    res.render('myprofile');
+  
+    res.render('myprofile', { layout: false});
 });
 
 
