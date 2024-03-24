@@ -139,57 +139,41 @@
 </html>
 
  -->
-
-
  <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beautiful Post Cards</title>
-    <link rel="stylesheet" href="/index.css">
-</head>
-<body>
-
-<nav>
-    <ul class="left-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Explore</a></li>
-    </ul>
-    <ul class="middle-links">
-        <li><p class="title">Paneer Posting</p></li>
-    </ul>
-    <ul class="right-links">
-        <li class="dropdown">
-            <a href="#" class="icon">My Account</a>
-            <div class="dropdown-content">
-                <a href="signup.html">Sign Up</a>
-                <a href="#">Login</a>
-            </div>
-        </li>      
-        <li><a href="#">Settings</a></li>
-    </ul>        
-</nav>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Beautiful Post Cards</title>
+     <link rel="stylesheet" href="/index.css">
+ </head>
+ <body>
  
-<div class="container">
-    <% posts.forEach(post => { %>
-        <div class="post-card">
-            <div class="post-header">
-                <h2><%- post.title %></h2>
-            </div>
-            <div class="post-content">
-                <p><%- post.content %></p>
-                <a href="#" class="continue-button">Continue Reading</a>
-            </div>
-            <br>
-            <div class="post-footer">
-                <button class="like-button">Like</button>
-                <button class="comment-button">Comment</button>
-                <button class="share-button">Share</button>
-            </div>
-        </div>
-    <% }) %>
-</div>
+ <nav>
+     <!-- Navigation Links -->
+ </nav>
+  
+ <div class="container">
+     <% posts.forEach(post => { %>
+         <div class="post-card">
+             <div class="post-header">
+                 <h2><%- post.title %></h2>
+                 <p>By <%- post.author %></p> <!-- Display author's name -->
+             </div>
+             <div class="post-content">
+                 <p><%- post.content %></p>
+                 <a href="#" class="continue-button">Continue Reading</a>
+             </div>
+             <br>
+             <div class="post-footer">
+                 <button class="like-button">Like</button>
+                 <button class="comment-button">Comment</button>
+                 <button class="share-button">Share</button>
+             </div>
+         </div>
+     <% }) %>
+ </div>
+  
+ </body>
+ </html>
  
-</body>
-</html>

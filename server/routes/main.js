@@ -49,16 +49,18 @@ router.post('/signup', (req, res) => {
   });
 
 
-router.get('/blog',(req,res) => {
-    connection.query('SELECT * FROM Posts', (error, results, fields) => {
+  router.get('/blog',(req,res) => {
+    connection.query('SELECT title, content, author FROM Posts', (error, results, fields) => {
         if (error) {
             console.error('Error retrieving posts:', error);
             res.status(500).send('Error retrieving posts');
             return;
         }
-        res.render('blog', { posts: results,layout: false }); // Render the blog EJS file and pass posts data
+        res.render('blog', { posts: results, layout: false }); // Merge the objects and pass them to res.render
     });
 });
+
+
 
 
 
@@ -67,15 +69,15 @@ router.get('/posting',(req,res) => {
 });
 
 router.post('/posting', (req, res) => {
-  const { postTitle, postContent } = req.body;
+  const { postTitle, postContent, authorName } = req.body;
 
   if (!postContent) {
       return res.status(400).send('Content cannot be empty');
   }
 
   // Insert the new post into the database
-  const query = 'INSERT INTO Posts (title, content) VALUES (?, ?)';
-  connection.query(query, [postTitle, postContent], (error, results, fields) => {
+  const query = 'INSERT INTO Posts (title, content, author) VALUES (?, ?, ?)';
+  connection.query(query, [postTitle, postContent, authorName], (error, results, fields) => {
       if (error) {
           console.error('Error creating post:', error);
           return res.status(500).send('Error creating post');
@@ -94,6 +96,21 @@ router.get('/myprofile',(req,res) => {
     res.render('myprofile', { layout: false});
 });
 
+router.post('/search', (req, res) => {
+  const searchQuery = req.body.searchQuery;
+
+  // Query the database for matching results
+  const query = `SELECT * FROM Posts WHERE title LIKE '%${searchQuery}%' OR author LIKE '%${searchQuery}%'`;
+  connection.query(query, (error, results) => {
+      if (error) {
+          console.error('Error searching posts:', error);
+          res.status(500).send('Error searching posts');
+          return;
+      }
+      // Render a new webpage with the matching results
+      res.render('search-results', { results: results ,layout: false});
+  });
+});
 
 
 
