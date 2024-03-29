@@ -2,7 +2,6 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Verdana', sans-serif;
-    background: radial-gradient(circle, rgb(60, 60, 61) 0%, rgb(0, 0, 0) 100%);
 }
 
 /*Navbar css*/
@@ -83,6 +82,7 @@ nav ul.right-links {
     z-index: 1;
 }
 
+
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
@@ -95,38 +95,91 @@ nav ul.right-links {
 }
 
 
-/*Parllax effect*/
-.parallax {
-    height: 1000px;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
+/* Body using parallax */
+.wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.banner {
+    background-color: #333; /* Example background color */
+}
+
+.text-wrapper {
+    color: #eee; /* Example text color */
+}
+
+.text-wrapper h1 {
+    margin: 0;
+    font-size: 2rem; /* Adjust as needed */
+}
+
+.text-wrapper p {
+    margin: 0;
+    font-size: 1rem; /* Adjust as needed */
+}
+
+.text-wrapper a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff914d; /* Example button background color */
+    color: #fff; /* Example button text color */
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.text-wrapper a:hover {
+    background-color: #ff6347; /* Example button background color on hover */
+}
+
+/* Wrapper with background image */
+.wrapper:nth-child(1) {
+    background-image: url('/images/parallax1.png');
     background-size: cover;
 }
 
-#parallax1 {
-    background-image: url('/images/parallax1.png');
-}
-
-#parallax2 {
+.wrapper:nth-child(2) {
     background-image: url('/images/parallax2.png');
+    background-size: cover;
 }
 
-#parallax3 {
-    background-image: url('/images/parallax3.png')
+.wrapper:nth-child(3) {
+    background-image:url('/images/parallax3.png');
+    background-size: cover;
 }
 
-#parallax4 {
-    background-image: url('/images/parallax4.png')
+.wrapper:nth-child(4) {
+    background-image:url('/images/parallax4.png');
+    background-size: cover;
 }
 
 
-#content { 
-    height: 400px;
-    position: relative; 
-    color: white; 
-    text-align: center; 
-} 
+
+
+ /*Scroll Bar*/
+ ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color: #000;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #f1f0f0;
+    border-radius: 10px;
+  }
+
+
+
+
+
 
 
 
@@ -173,7 +226,7 @@ nav ul.right-links {
 
 .card {
   border-radius: 10px;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+  /*box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);*/
   width: 700px;
   height: 500px;
   background-color: #ffffff;
