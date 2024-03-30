@@ -305,10 +305,12 @@ nav button[type="submit"]:hover {
 
 
 #content { 
-    height: 100px;
+    height: 150px;
     position: relative; 
     color: white; 
     text-align: center; 
+    padding-top: 40px;
+
 } 
 
 

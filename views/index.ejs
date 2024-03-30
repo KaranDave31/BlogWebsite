@@ -7,6 +7,20 @@
     <title><%- locals.title -%></title>
 </head>
 <body>
+    <style>
+        .column {
+            float: left;
+            margin: 5%;
+            padding: 10px;
+            width: 15%;
+            text-align: center;
+         }
+         .row::after {
+            content: "";
+            clear: both;
+            display: table;
+         }
+    </style>
 
     <!--Navbar-->
     <nav>
@@ -37,38 +51,52 @@
     </nav>
     
        <!-- Body using parallax -->
+    
+       
        <div id="parallax1" class="parallax"></div>
        <div id="content">
-        <h1><span style="color: #020101;">Paneer Posting</span></h1>
-        <p></p> 
-       </div>
-       
-       <div id="parallax2" class="parallax"></div>
-       <div id="content">
-        <h1 style="color: rgb(228, 228, 228);">"Create a blog"</h1>
+        <h1 style="color: rgb(228, 228, 228);">Create a blog</h1>
         <p style="color: rgb(228, 228, 228);">Share your story with the world. Stand out with a professionally-designed blog website that can be customized to fit your brand. Build, manage, and promote your blog with Squarespace’s built-in suite of design and marketing tools.</p>
        </div>
    
-       <div id="parallax3" class="parallax"></div>
+       <div id="parallax2" class="parallax"></div>
        <div id="content">
-        <h1 style="color: rgb(228, 228, 228);">"Express Yourself:"</h1>
+        <h1 style="color: rgb(228, 228, 228);">Express Yourself</h1>
         <p style="color: rgb(228, 228, 228);">Unleash your creativity and express your unique perspective through engaging blog posts.</p>
        </div>
-   
-    
-   
-   
+
+       <div id="parallax3" class="parallax"></div>
        <div id="content">
-           <h1>Footer</h1>
-           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h1 style="color: rgb(228, 228, 228);">Express Yourself</h1>
+        <p style="color: rgb(228, 228, 228);">Unleash your creativity and express your unique perspective through engaging blog posts.</p>
        </div>
 
-        <div class="text-wrapper">
+       <div id="parallax4" class="parallax"></div>
+       <div id="content">
+        <h1 style="color: rgb(228, 228, 228);">Sign up now!!</h1>
+        <p><button style="padding: 15px 20px; border-radius: 10px;">Sign up</button></p>
+       </div>
+
+
        
-            <p style="padding: 15px 250px; border-radius: 10px;"><a href="policy">Privacy Policy</a></p>
-            <p style="padding: 15px 250px; border-radius: 10px;"><a href="aboutus">About us</a></p>
-            <p style="padding: 15px 250px; border-radius: 10px;"><a href="membership">Membership</a></p>
-            <p style="padding: 15px 250px; border-radius: 10px;"><a href="tutorial">Get started</a></p>
+
+       
+   
+    
+
+
+        <div style="font-size: large; " >
+            <div class="row">
+                <div class="column">
+                    <p style=""><a href="policy.ejs">Privacy Policy</a></p>
+                </div>
+                <div class="column">
+                    <p style="padding: 15px 250px; border-radius: 10px;"><a href="aboutus.ejs">About Us</a></p>
+                </div>
+                <div class="column">
+                    <p style="padding: 15px 250px; border-radius: 10px;"><a href="membership.ejs">Membership</a></p>
+                </div>
+            </div>
         </div>
     </div>  
 
