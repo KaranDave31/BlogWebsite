@@ -6,7 +6,7 @@ const mysql = require('mysql2');
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'root',
+    password: 'root@kd',
     database: 'blogDatabase'
   });
 
@@ -111,6 +111,32 @@ router.post('/search', (req, res) => {
       res.render('search-results', { results: results ,layout: false});
   });
 });
+
+
+router.get('/membership',(req,res) => {
+   res.render('membership', { layout: false});
+});
+
+router.get('/aboutus',(req,res) => {
+  res.render('aboutus', { layout: false});
+});
+
+
+router.get('/policy',(req,res) => {
+  res.render('policy', { layout: false});
+});
+
+
+router.get('/tutorial',(req,res) => {
+  res.render('tutorial', { layout: false});
+});
+
+router.get('/login',(req,res) => {
+  res.render('login', { layout: false});
+});
+
+
+
 
 
 

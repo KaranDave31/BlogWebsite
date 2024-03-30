@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Paneer Posting</title>
+
+    <style>
+         .column {
+            border: solid 1px;
+            border-radius: 10px;
+            color: white;
+            float: left;
+            margin: 6.5%;
+            padding: 10px;
+            width: 18%;
+            text-align: center;
+         }
+         .row::after {
+            content: "";
+            clear: both;
+            display: table;
+         }
+    </style>
+</head>
+<body>
+
+    <!--Navbar-->
+    <nav>
+        <ul class="left-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Explore</a></li>
+        </ul>
+        <ul class="middle-links">
+            <li><p class="title">Paneer Posting</p></li>
+        </ul>
+    </ul>
+    <ul class="right-links">
+        <li class="dropdown">
+            <a href="#" class="icon">My Account</a>
+            <div class="dropdown-content">
+                <a href="#">Sign Up</a>
+                <a href="#">Login</a>
+            </div>
+        </li>       
+        <li><a href="#">Settings</a></li> 
+    </ul>        
+    </nav>
+    
+    <div class="wrapper" style="height: auto; padding: 40px;">
+        <div class="text-wrapper">
+            <h2 style="font-size: 40px;">Choose Your Membership Plan</h2>
+        </div>
+    </div>
+
+
+    <!--Signup Box-->
+    <div class="container">
+        <div class="card">
+          <div class="card_title">
+            <h1>Unlock endless features with Premium Membership!</h1>
+          </div>
+          <div class="form">
+          <form action="/" method="post">
+            <input type="text" name="card_details" id="card_details" placeholder="Card Number" />
+            <input type="password" name="password" placeholder="Password" id="password" />
+            <p>Choose Your Membership Plan:</p>
+            <select>
+                <option>Regular</option>
+                <option>Premium</option>
+                <option>Deluxe</option>
+            </select>
+            <br>
+            <br>
+            <button>Pay</button>
+            </form>
+          </div>
+          <div class="card_terms">
+              <input type="checkbox" name="" id="terms"> <span>I have read and agree to the <a href="">Terms of Service</a></span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+           <h2>Regular</h2>
+           <p>Unlimited Blog Writing with extensive collection of templates.</p>
+           <h2>Rs. 200</h2>
+        </div>
+        <div class="column">
+           <h2>Premium</h2>
+           <p>Thousands of pre-designed themes to choose from. Access to premium designing tools.</p>
+           <h2>Rs. 400</h2>
+        </div>
+        <div class="column">
+           <h2><div style="background: linear-gradient(to right, 
+            violet, indigo, blue, green, yellow, orange, red); border-radius: 10px;">Deluxe</div></h2>
+           <p>Professional grade templates with tools for personalization. 24/7 access to our support team.</p>
+           <h2>Rs. 900</h2>
+     </div>
+
+</body>
+</html>
