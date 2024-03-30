@@ -599,8 +599,8 @@ nav ul.right-links {
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     padding: 30px;
-    max-width: 400px;
-    width: 100%;
+    width: 1000px;
+    height: 800px;
     transition: transform 0.3s ease;
 }
  
@@ -771,13 +771,15 @@ h1 {
     width: 100%;
     padding: 10px;
     border: none;
-    border-bottom: 2px solid #007bff;
+    border-bottom: 2px solid orange;
     background-color: transparent;
     box-sizing: border-box;
     font-weight: bold;
 }
  
 .post-content {
+    width: 980px;
+    height: 630px;
     min-height: 200px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -790,7 +792,7 @@ h1 {
  
 .post-content:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: orange;
 }
  
 .post-footer {
@@ -804,7 +806,7 @@ h1 {
 }
  
 .post-btn, .edit-btn, .delete-btn {
-    background-color: #007bff;
+    background-color: orange;
     color: #fff;
     border: none;
     padding: 8px 15px;
@@ -815,6 +817,6 @@ h1 {
 }
  
 .post-btn:hover, .edit-btn:hover, .delete-btn:hover {
-    background-color: #0056b3;
+    background-color: orange;
 }
  

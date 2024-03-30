@@ -3,18 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Results</title>
+    <link rel="stylesheet" href="index.css">
+    <title>Paneer Posting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 </head>
 <body>
-    <h1>Search Results</h1>
-    <ul>
-        <% results.forEach(result => { %>
-            <li>
-                <h2><%= result.title %></h2>
-                <p>By <%= result.author %></p>
-                <p><%= result.content %></p> <!-- Display content -->
-            </li>
-        <% }); %>
-    </ul>
+
+    <center>
+    <div class="main">
+        <h1 style="color: white; padding-top: 30px;">Search Results</h1>
+        <ul>
+            <% results.forEach(result => { %>
+                <li>
+                    <h2><%= result.title %></h2>
+                    <p>By <%= result.author %></p>
+                    <p><%= result.content %></p> <!-- Display content -->
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+</center>
+
+
+    <!--
+        Display search results using card
+
+    <h2 style="color: white;">Your Blogs</h2>
+    <div class="card">
+        <div class="card-body">
+
+            NONE
+        </div>
+    </div>
+    -->
+
+
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
