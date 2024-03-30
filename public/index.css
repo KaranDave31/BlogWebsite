@@ -5,16 +5,23 @@ body {
 }
 
 /*Navbar css*/
+
+
+
+
+
+/* Navbar styles */
 nav {
     position: sticky;
-    top:0;
+    top: 0;
     width: 100%;
     z-index: 1000;
-    height: 60px;
+    height: 70px; /* Increased height for better visibility */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: black;
+    background-color: #4e4d4d; /* Dark background color */
+    padding: 0 20px; /* Increased padding */
 }
 
 nav ul {
@@ -25,22 +32,22 @@ nav ul {
 }
 
 nav li {
-    margin: 0 10px;
+    margin: 0 15px; /* Increased margin */
 }
 
 nav a {
     text-decoration: none;
-    color: #ccc;
+    color: #fff; /* White text color */
+    font-size: 1.05rem; /* Increased font size by 5% */
     transition: color 0.3s ease;
 }
 
 nav a:hover {
-    color: #fff;
+    color: #000; /* Black text color on hover */
 }
 
 nav ul.left-links {
     justify-content: flex-start;
-    padding-left: 2%;
 }
 
 nav ul.middle-links {
@@ -49,19 +56,193 @@ nav ul.middle-links {
 
 nav ul.right-links {
     justify-content: flex-end;
-    padding-right: 2%;
+}
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px; /* Rounded corners */
+}
+
+.dropdown-content a {
+    color: #333; /* Dark text color */
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd; /* Light gray background on hover */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Search bar styles */
+/* Navbar styles */
+nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 80px; /* Increased height for better visibility */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333; /* Dark background color */
+    padding: 0 40px; /* Increased padding */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin: 0 20px; /* Increased margin */
+    font-size: 1.2rem; /* Increased font size */
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff; /* White text color */
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #000; /* Black text color on hover */
+}
+
+nav ul.left-links {
+    justify-content: flex-start;
+}
+
+nav ul.middle-links {
+    justify-content: center;
+}
+
+nav ul.right-links {
+    justify-content: flex-end;
+}
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px; /* Rounded corners */
+}
+
+.dropdown-content a {
+    color: #333; /* Dark text color */
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease; /* Smooth transition */
+    font-size: 1.2rem; /* Increased font size */
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd; /* Light gray background on hover */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Search bar styles */
+nav form {
+    display: flex;
+    align-items: center;
+}
+
+nav input[type="search"] {
+    padding: 10px 12px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 250px;
+    font-size: 1.2rem; /* Increased font size */
+}
+
+nav button[type="submit"] {
+    background-color: #ffd700; /* Yellow background color */
+    color: #000; /* Black text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
+    font-size: 1.2rem; /* Increased font size */
+}
+
+nav button[type="submit"]:hover {
+    background-color: #000; /* Black background on hover */
+    color: #ffd700; /* Yellow text color on hover */
+}
+
+/* My Account and Settings alignment */
+.dropdown-content a:nth-last-child(2),
+.dropdown-content a:last-child {
+    margin-top: 10px; /* Bring down the My Account and Settings links */
 }
 
 
+
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 .title{
-    font-size: 36px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 10px;
+  position: absolute;
+  top: 1%;
+  left: 49%;
+  transform: translate(-50%,-50%);
+  background-image: linear-gradient(gold, gold);
+  background-size: 100% 5px;
+  background-repeat: no-repeat;
+  background-position: 90% 0%;
+  padding: 5px 10px;    
+   transition: background-size .7s, background-position .5s ease-in-out;
+}
+
+.title:hover {
+  background-size: 100% 80%;
+  background-position: 0% 100%;
+  transition: background-position .7s, background-size .5s ease-in-out;
+}
+
+/*
+.title{
+    font-size: 40px;
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 30px;
     font-weight: bold;
     font-family: 'Brush Script MT', cursive;     
 }
-
+*/
 
 /* Dropdown list for my account*/
 .dropdown {
@@ -93,6 +274,43 @@ nav ul.right-links {
 .dropdown-content a:hover {
     background-color: #f1f1f1;
 }
+
+
+
+/*Parllax effect*/
+.parallax {
+    height: 1000px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+#parallax1 {
+    background-image: url('/images/parallax7.png');
+}
+
+#parallax2 {
+    background-image: url('/images/parallax1.png');
+}
+
+#parallax3 {
+    background-image: url('/images/parallax6.png')
+}
+
+#parallax4 {
+    background-image: url('/images/parallax4.png')
+}
+
+
+#content { 
+    height: 100px;
+    position: relative; 
+    color: white; 
+    text-align: center; 
+} 
+
 
 
 /* Body using parallax */
@@ -136,26 +354,7 @@ nav ul.right-links {
     background-color: #ff6347; /* Example button background color on hover */
 }
 
-/* Wrapper with background image */
-.wrapper:nth-child(1) {
-    background-image: url('/images/parallax1.png');
-    background-size: cover;
-}
 
-.wrapper:nth-child(2) {
-    background-image: url('/images/parallax2.png');
-    background-size: cover;
-}
-
-.wrapper:nth-child(3) {
-    background-image:url('/images/parallax3.png');
-    background-size: cover;
-}
-
-.wrapper:nth-child(4) {
-    background-image:url('/images/parallax4.png');
-    background-size: cover;
-}
 
 
 
@@ -290,7 +489,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Verdana', sans-serif;
-    background: radial-gradient(circle, rgb(60, 60, 61) 0%, rgb(0, 0, 0) 100%);
+    background: radial-gradient(circle, rgb(8, 8, 8) 0%, rgb(0, 0, 0) 100%);
+
 }
  
 /*Navbar css*/

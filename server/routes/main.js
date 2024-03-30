@@ -10,7 +10,7 @@ const nodemailer = require('nodemailer');
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'root@kd',
+    password: 'root',
     database: 'blogDatabase'
   });
 
