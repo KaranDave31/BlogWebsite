@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
+// const bcrypt = require('bcrypt');
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -33,20 +34,36 @@ router.get('/signup',(req,res) => {
 });
 
 router.post('/signup', (req, res) => {
-    const { username, email, password, full_name } = req.body;
-  
-    // Insert user data into MySQL
-    const query = 'INSERT INTO Users (username, email, password, full_name) VALUES (?, ?, ?, ?)';
-    connection.query(query, [username, email, password, full_name], (error, results, fields) => {
+  const { username, email, password, fullname } = req.body;
+
+  // Check if the email has been used more than 5 times
+  connection.query('SELECT COUNT(*) AS emailCount FROM Users WHERE email = ?', [email], (error, results) => {
       if (error) {
-        console.error('Error inserting user data: ' + error.stack);
-        res.status(500).send('Error saving user data');
-        return;
+          console.error('Error checking email count:', error);
+          res.status(500).send('Error checking email count');
+          return;
       }
-      console.log('User signed up successfully');
-      res.redirect('/signup-success'); // Redirect to a success page or any other page you prefer
-    });
+
+      const emailCount = results[0].emailCount;
+
+      if (emailCount >= 5) {
+          res.status(400).send('This email has been used too many times. Please use a different email.');
+          return;
+      }
+
+      // Insert user data into MySQL
+      const query = 'INSERT INTO Users (username, email, password, full_name) VALUES (?, ?, ?, ?)';
+      connection.query(query, [username, email, password, fullname], (insertError, insertResults, insertFields) => {
+          if (insertError) {
+              console.error('Error inserting user data:', insertError);
+              res.status(500).send('Error saving user data');
+              return;
+          }
+          console.log('User signed up successfully');
+          res.redirect('/signup-success'); // Redirect to a success page or any other page you prefer
+      });
   });
+});
 
 
   router.get('/blog',(req,res) => {
@@ -135,9 +152,33 @@ router.get('/login',(req,res) => {
   res.render('login', { layout: false});
 });
 
+router.post('/login', (req, res) => {
+  const { username, password } = req.body;
 
+  // Query the database to fetch the user's information
+  connection.query('SELECT * FROM Users WHERE username = ?', [username], (error, results) => {
+      if (error) {
+          console.error('Error fetching user:', error);
+          res.status(500).send('Internal Server Error');
+          return;
+      }
 
+      // Check if the user exists
+      if (results.length === 0) {
+          res.status(401).send('Invalid username or password');
+          return;
+      }
 
+      const user = results[0];
+
+      // Compare the provided password with the one stored in the database
+      if (password === user.password) {
+          res.status(200).send('Login successful');
+      } else {
+          res.status(401).send('Invalid username or password');
+      }
+  });
+});
 
 
 module.exports = router;
