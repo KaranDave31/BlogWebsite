@@ -8,11 +8,12 @@
 </head>
 <body>
 
-    <!--Navbar-->
     <nav>
         <ul class="left-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Explore</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="blog">Explore</a></li>
+            <li><a href="posting">Post Now</a></li>
+
         </ul>
         <ul class="middle-links">
             <li><p class="title">Paneer Posting</p></li>
@@ -22,11 +23,16 @@
         <li class="dropdown">
             <a href="#" class="icon">My Account</a>
             <div class="dropdown-content">
-                <a href="#">Sign Up</a>
-                <a href="#">Login</a>
+                <a href="signup">Sign Up</a>
+                <a href="login">Login</a>
             </div>
         </li>       
-        <li><a href="#">Settings</a></li> 
+        <li><a href="myprofile">Settings</a></li> 
+        <form action="/search" role="search" method="post">
+            <input type="search" name="searchQuery" id="searchInput" placeholder="Enter blog title or author name">
+            <button type="submit">Search</button>
+        </form>
+        
     </ul>        
     </nav>
     
@@ -43,12 +49,13 @@
             <input type="text" name="fullname" id="fullname" placeholder="FullName" />
             <input type="email" name="email" placeholder="Email" id="email" />
             <input type="password" name="password" placeholder="Password" id="password" />
+            <div class="card_terms">
+                <input type="checkbox" name="" id="terms"> <span>I have read and agree to the <a href="">Terms of Service</a></span>
+            </div>
             <button>Sign Up</button>
             </form>
           </div>
-          <div class="card_terms">
-              <input type="checkbox" name="" id="terms"> <span>I have read and agree to the <a href="">Terms of Service</a></span>
-          </div>
+        
         </div>
       </div>
 

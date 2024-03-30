@@ -8,11 +8,12 @@
 </head>
 <body>
 
-    <!--Navbar-->
     <nav>
         <ul class="left-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Explore</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="login">Explore</a></li>
+            <li><a href="login">Post Now</a></li>
+
         </ul>
         <ul class="middle-links">
             <li><p class="title">Paneer Posting</p></li>
@@ -22,11 +23,16 @@
         <li class="dropdown">
             <a href="#" class="icon">My Account</a>
             <div class="dropdown-content">
-                <a href="#">Sign Up</a>
-                <a href="#">Login</a>
+                <a href="signup">Sign Up</a>
+                <a href="login">Login</a>
             </div>
         </li>       
-        <li><a href="#">Settings</a></li> 
+        <li><a href="myprofile">Settings</a></li> 
+        <form action="/search" role="search" method="post">
+            <input type="search" name="searchQuery" id="searchInput" placeholder="Enter blog title or author name">
+            <button type="submit">Search</button>
+        </form>
+        
     </ul>        
     </nav>
     
@@ -35,18 +41,38 @@
         <div class="card">
           
           <div class="form">
-          <form action="/login" method="post">
-            <input type="text" name="username" id="username" placeholder="UserName" />
-            <input type="text" name="fullname" id="fullname" placeholder="FullName" />
-            <input type="email" name="email" placeholder="Email" id="email" />
-            <input type="password" name="password" placeholder="Password" id="password" />
-            <button>LOGIN</button>
+            <form action="/login" method="post">
+                <input type="text" name="username" id="username" placeholder="UserName" />
+                <input type="text" name="fullname" id="fullname" placeholder="FullName" />
+                <input type="email" name="email" placeholder="Email" id="email" />
+                <input type="password" name="password" id="password" placeholder="Password" />
+                <input type="checkbox" id="showPasswordCheckbox" onclick="togglePasswordVisibility()">
+                <label for="showPasswordCheckbox">Show Password</label>
+                <button type="submit">LOGIN</button>
             </form>
           </div>
      
         </div>
       </div>
+      <script>
+        // Extract the username from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        if (username) {
+            // Display a welcome message
+            alert(`Welcome back, ${username}!`);
+        }
 
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
+        
+    </script>
 
 </body>
 </html>

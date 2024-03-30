@@ -144,14 +144,38 @@
  <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Beautiful Post Cards</title>
+     <title>Blogs</title>
      <link rel="stylesheet" href="/index.css">
  </head>
  <body>
  
- <nav>
-     <!-- Navigation Links -->
- </nav>
+    <nav>
+        <ul class="left-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="blog">Explore</a></li>
+            <li><a href="posting">Post Now</a></li>
+
+        </ul>
+        <ul class="middle-links">
+            <li><p class="title">Paneer Posting</p></li>
+        </ul>
+    </ul>
+    <ul class="right-links">
+        <li class="dropdown">
+            <a href="#" class="icon">My Account</a>
+            <div class="dropdown-content">
+                <a href="signup">Sign Up</a>
+                <a href="login">Login</a>
+            </div>
+        </li>       
+        <li><a href="myprofile">Settings</a></li> 
+        <form action="/search" role="search" method="post">
+            <input type="search" name="searchQuery" id="searchInput" placeholder="Enter blog title or author name">
+            <button type="submit">Search</button>
+        </form>
+        
+    </ul>        
+    </nav>
   
  <div class="container">
      <% posts.forEach(post => { %>

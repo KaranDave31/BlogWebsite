@@ -3,6 +3,9 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 // const bcrypt = require('bcrypt');
+const nodemailer = require('nodemailer');
+
+
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -64,7 +67,6 @@ router.post('/signup', (req, res) => {
       });
   });
 });
-
 
   router.get('/blog',(req,res) => {
     connection.query('SELECT title, content, author FROM Posts', (error, results, fields) => {
@@ -143,6 +145,10 @@ router.get('/policy',(req,res) => {
   res.render('policy', { layout: false});
 });
 
+router.get('/indexMain',(req,res) => {
+  res.render('indexMain', { layout: false});
+});
+
 
 router.get('/tutorial',(req,res) => {
   res.render('tutorial', { layout: false});
@@ -173,12 +179,16 @@ router.post('/login', (req, res) => {
 
       // Compare the provided password with the one stored in the database
       if (password === user.password) {
-          res.status(200).send('Login successful');
+          // Redirect to indexMain.ejs after a short delay
+          setTimeout(() => {
+            res.redirect(`/indexMain?login=success&username=${user.username}`);
+          }, 1000);
       } else {
           res.status(401).send('Invalid username or password');
       }
   });
 });
+
 
 
 module.exports = router;
