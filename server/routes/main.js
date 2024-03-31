@@ -68,16 +68,31 @@ router.post('/signup', (req, res) => {
   });
 });
 
-  router.get('/blog',(req,res) => {
-    connection.query('SELECT title, content, author FROM Posts', (error, results, fields) => {
-        if (error) {
-            console.error('Error retrieving posts:', error);
-            res.status(500).send('Error retrieving posts');
-            return;
-        }
-        res.render('blog', { posts: results, layout: false }); // Merge the objects and pass them to res.render
-    });
+router.get('/blog', (req, res) => {
+  connection.query('SELECT * FROM Posts', (postError, postResults) => {
+      if (postError) {
+          console.error('Error retrieving posts:', postError);
+          res.status(500).send('Error retrieving posts');
+          return;
+      }
+      connection.query('SELECT * FROM Comments', (commentError, commentResults) => {
+          if (commentError) {
+              console.error('Error retrieving comments:', commentError);
+              res.status(500).send('Error retrieving comments');
+              return;
+          }
+          // Combine posts and comments data
+          const combinedData = postResults.map(post => {
+              const postComments = commentResults.filter(comment => comment.post_title === post.title);
+              return { ...post, comments: postComments.map(comment => comment.comment_content) };
+          });
+          res.render('blog', { posts: combinedData, layout: false });
+      });
+  });
 });
+
+
+
 router.post('/like', (req, res) => {
   const postTitle = req.body.postTitle;
 
@@ -96,20 +111,21 @@ router.post('/like', (req, res) => {
   });
 });
 router.post('/comment', (req, res) => {
-  const { commentContent, postId } = req.body;
+  const { commentContent, postTitle } = req.body;
 
   // Insert the comment into the database
-  const query = 'INSERT INTO Comments (comment_content, post_id) VALUES (?, ?)';
-  connection.query(query, [commentContent, postId], (error, results) => {
+  const query = 'INSERT INTO Comments (comment_content, post_title) VALUES (?, ?)';
+  connection.query(query, [commentContent, postTitle], (error, results) => {
       if (error) {
           console.error('Error inserting comment:', error);
           res.status(500).send('Error inserting comment');
           return;
       }
       console.log('Comment added successfully');
-      res.redirect('/blog');
+      res.redirect('/blog?commentSuccess=true');
   });
 });
+
 
 
 

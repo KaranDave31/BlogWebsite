@@ -219,7 +219,6 @@
         </ul>
     </nav>
     
-  
     <div class="container">
         <% posts.forEach(post => { %>
             <div class="post-card">
@@ -229,6 +228,13 @@
                 </div>
                 <div class="post-content">
                     <p><%- post.content %></p>
+                </div>
+                <div class="post-comments">
+                    <% post.comments.forEach(comment => { %>
+                        <div class="comment">
+                            <p><%- comment %></p>
+                        </div>
+                    <% }) %>
                 </div>
                 <br>
                 <div class="post-footer">
@@ -241,6 +247,7 @@
                         <textarea name="commentContent" placeholder="Write your comment here..." rows="4" cols="50"></textarea>
                         <button type="submit">Submit Comment</button>
                     </form>
+                    
                     <button class="shareButton">Share</button>
     
                     <!-- Popup container -->
@@ -252,7 +259,17 @@
             </div>
         <% }) %>
     </div>
+    
+    
     <script>
+        const urlParams = new URLSearchParams(window.location.search);
+    const commentSuccess = urlParams.get('commentSuccess');
+
+    // If the commentSuccess parameter is true, show an alert
+    if (commentSuccess === 'true') {
+        alert('Comment added successfully!');
+    }
+
         // Function to open the popup and display the current URL
         function openPopup() {
             const currentUrl = window.location.href;
