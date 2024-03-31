@@ -40,17 +40,21 @@
     </nav>
     
     <!--Signup Box-->
-    <div class="container">
+    <div class="container" style="padding-top: 40px;">
         <div class="card">
-          
+            <div class="card_title">
+                <h1>Log in</h1>
+                <span>Not a member yet? <a href="signup">Sign up</a></span>
+              </div>
           <div class="form">
             <form action="/login" method="post">
                 <input type="text" name="username" id="username" placeholder="UserName" />
                 <input type="text" name="fullname" id="fullname" placeholder="FullName" />
                 <input type="email" name="email" placeholder="Email" id="email" />
                 <input type="password" name="password" id="password" placeholder="Password" />
-                <input type="checkbox" id="showPasswordCheckbox" onclick="togglePasswordVisibility()">
                 <label for="showPasswordCheckbox">Show Password</label>
+                <input type="checkbox" id="showPasswordCheckbox" onclick="togglePasswordVisibility()" style="width: auto;">
+
                 <button type="submit">LOGIN</button>
             </form>
           </div>
