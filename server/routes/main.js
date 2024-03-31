@@ -10,7 +10,7 @@ const nodemailer = require('nodemailer');
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'password@123',
+    password: 'root@kd',
     database: 'blogDatabase'
   });
 
@@ -155,12 +155,6 @@ router.post('/posting', (req, res) => {
 });
 
 
-
-router.get('/myprofile',(req,res) => {
-  
-    res.render('myprofile', { layout: false});
-});
-
 router.post('/search', (req, res) => {
   const searchQuery = req.body.searchQuery;
 
@@ -216,7 +210,9 @@ router.get('/policy',(req,res) => {
 });
 
 router.get('/indexMain',(req,res) => {
-  res.render('indexMain', { layout: false});
+  const username = req.query.username; // Assuming you retrieve the username from the request
+  res.render('indexMain', { username: username, layout: false });
+
 });
 
 
@@ -227,7 +223,7 @@ router.get('/tutorial',(req,res) => {
 router.get('/login',(req,res) => {
   res.render('login', { layout: false});
 });
-
+// Login Route
 router.post('/login', (req, res) => {
   const { username, password } = req.body;
 
@@ -249,16 +245,47 @@ router.post('/login', (req, res) => {
 
       // Compare the provided password with the one stored in the database
       if (password === user.password) {
-          // Redirect to indexMain.ejs after a short delay
+          // Redirect to indexMain.ejs after a short delay with username in URL
           setTimeout(() => {
-            res.redirect(`/indexMain?login=success&username=${user.username}`);
+              res.redirect(`/indexMain?login=success&username=${user.username}`);
           }, 1000);
       } else {
           res.status(401).send('Invalid username or password');
       }
   });
 });
+router.get('/myprofile', (req, res) => {
+    const username = req.query.username;
 
+    // Query the database to fetch the user's information based on the username
+    connection.query('SELECT * FROM Users WHERE username = ?', [username], (error, userResults) => {
+        if (error) {
+            console.error('Error fetching user:', error);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+
+        // Check if the user exists
+        if (userResults.length === 0) {
+            res.status(404).send('User not found');
+            return;
+        }
+
+        const user = userResults[0];
+
+        // Fetch posts authored by the user
+        connection.query('SELECT * FROM Posts WHERE author = ?', [username], (postError, postResults) => {
+            if (postError) {
+                console.error('Error fetching user posts:', postError);
+                res.status(500).send('Internal Server Error');
+                return;
+            }
+
+            // Render the profile page with user details and posts
+            res.render('myprofile', { user, posts: postResults, layout: false });
+        });
+    });
+});
 
 
 module.exports = router;

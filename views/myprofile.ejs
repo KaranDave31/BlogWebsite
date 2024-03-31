@@ -42,58 +42,68 @@
         </ul>
     </nav>
     
-    
-<!--My profile-->
-<center>
+    <!-- settings.ejs -->
+
+<!-- Profile Details -->
 <div class="main">
     <h2 style="color: white;">Profile Details</h2>
     <div class="container">
-        <div class="card" style="height: 180px;">
+        <div class="card" style="height: auto;">
             <table style="font-size: large;">
                 <tbody>
                     <tr>
-                        <td>Name</td>
+                        <td>User ID</td>
                         <td>:</td>
-                        <td>ImDezCode</td>
+                        <td><%= user.user_id %></td>
+                    </tr>
+                    <tr>
+                        <td>Username</td>
+                        <td>:</td>
+                        <td><%= user.username %></td>
                     </tr>
                     <tr>
                         <td>Email</td>
                         <td>:</td>
-                        <td>imdezcode@gmail.com</td>
+                        <td><%= user.email %></td>
                     </tr>
                     <tr>
-                        <td>Address</td>
+                        <td>Full Name</td>
                         <td>:</td>
-                        <td>Bali, Indonesia</td>
+                        <td><%= user.full_name %></td>
                     </tr>
                     <tr>
-                        <td>Hobbies</td>
+                        <td>Date Registered</td>
                         <td>:</td>
-                        <td>Diving, Reading Book</td>
+                        <td><%= user.date_registered %></td>
                     </tr>
-                    <tr>
-                        <td>Job</td>
-                        <td>:</td>
-                        <td>Web Developer</td>
-                    </tr>
-                    <tr>
-                        <td>Skill</td>
-                        <td>:</td>
-                        <td>PHP, HTML, CSS, Java</td>
-                    </tr>
+                    <!-- Include other user details here -->
                 </tbody>
             </table>
+            <h2 style="color: white;">Your Posts</h2>
+            <% if (posts.length > 0) { %>
+                <% posts.forEach(post => { %>
+                    <div class="post-card">
+                        <div class="post-header">
+                            <h2><%= post.title %></h2>
+                            <p>By <%= post.author %></p>
+                        </div>
+                        <div class="post-content">
+                            <p><%= post.content %></p>
+                        </div>
+                        <!-- Include other post details here -->
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p>No posts found</p>
+            <% } %>
         </div>
     </div>
-
-    <h2 style="color: white;">Your Blogs</h2>
-    <div class="card">
-        <div class="card-body">
-
-            NONE
-        </div>
+    
     </div>
+    
+    
 </div>
-</center>
+
+
 </body>
 </html>
