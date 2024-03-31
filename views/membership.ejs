@@ -58,32 +58,7 @@
 
 
     <!--Signup Box-->
-    <div class="container">
-        <div class="card" style="height: 400px;" >
-          <div class="card_title">
-            <h1>Unlock endless features with Premium Membership!</h1>
-          </div>
-          <div class="form">
-          <form action="/" method="post">
-            <input type="text" name="card_details" id="card_details" placeholder="Card Number" />
-            <input type="password" name="password" placeholder="Password" id="password" />
-            <p>Choose Your Membership Plan:</p>
-            <select>
-                <option>Regular</option>
-                <option>Premium</option>
-                <option>Deluxe</option>
-            </select>
-            <br>
-            <br>
-            <button>Pay</button>
-            </form>
-          </div>
-          <div class="card_terms">
-              <input type="checkbox" name="" id="terms"> <span>I have read and agree to the <a href="">Terms of Service</a></span>
-          </div>
-        </div>
-      </div>
-      <div class="row">
+    <div class="row">
         <div class="column">
            <h2>Regular</h2>
            <p>Unlimited Blog Writing with extensive collection of specially selected templates only with Paneer Posting.</p>
@@ -101,6 +76,33 @@
            <p>Professional grade templates with tools for personalization. 24/7 access to our support team.</p>
            <h2>Rs. 900</h2>
      </div>
+    <div class="container">
+        <div class="card" style="height: 400px;" >
+          <div class="card_title">
+            <h1>Unlock endless features with Premium Membership!</h1>
+          </div>
+          <div class="form">
+            <form action="/payment" method="post">
+                <input type="text" name="name" id="name" placeholder="Your Name" />
+                <input type="text" name="card_details" id="card_details" placeholder="Card Number" />
+                <input type="password" name="password" placeholder="Password" id="password" />
+                <p>Choose Your Membership Plan:</p>
+                <select name="plan">
+                    <option value="Regular">Regular</option>
+                    <option value="Premium">Premium</option>
+                    <option value="Deluxe">Deluxe</option>
+                </select>
+                <br>
+                <br>
+                <button type="submit">Pay</button>
+            </form>
+          </div>
+          <div class="card_terms">
+              <input type="checkbox" name="" id="terms"> <span>I have read and agree to the <a href="">Terms of Service</a></span>
+          </div>
+        </div>
+      </div>
+      
 
 </body>
 </html>

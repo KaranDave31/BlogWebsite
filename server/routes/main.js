@@ -136,8 +136,32 @@ router.get('/membership',(req,res) => {
    res.render('membership', { layout: false});
 });
 
+router.post('/payment', (req, res) => {
+  const { name, card_details, password, plan } = req.body;
+
+  // Insert payment data into MySQL
+  const query = 'INSERT INTO payment (name, cardNum, password, plan) VALUES (?, ?, ?, ?)';
+  connection.query(query, [name, card_details, password, plan], (error, results) => {
+    if (error) {
+      console.error('Error inserting payment data:', error);
+      res.status(500).send('Error processing payment');
+      return;
+    }
+    console.log('Payment processed successfully');
+
+    // Redirect to payment success page
+    res.redirect('/payment-success');
+  });
+});
+
+
+
 router.get('/aboutus',(req,res) => {
   res.render('aboutus', { layout: false});
+});
+
+router.get('/payment-success',(req,res) => {
+  res.render('payment-success', { layout: false});
 });
 
 
