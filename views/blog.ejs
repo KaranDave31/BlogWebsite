@@ -147,37 +147,78 @@
      <title>Blogs</title>
      <link rel="stylesheet" href="/index.css">
      <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+     <style>
+        /* Style for the popup container */
+        .popup-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            display: none;
+        }
 
+        /* Style for the input field */
+        .link-input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        /* Style for the copy button */
+        .copy-button {
+            cursor: pointer;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        /* Hover effect for the copy button */
+        .copy-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
  </head>
  <body>
  
     <nav>
         <ul class="left-links">
             <li><a href="/">Home</a></li>
-            <li><a href="blog">Explore</a></li>
-            <li><a href="posting">Post Now</a></li>
+            <li><a href="login">Explore</a></li>
+            <li><a href="login">Post Now</a></li>
+            <li><a href="aboutus">About us</a></li>
 
         </ul>
         <ul class="middle-links">
             <li><p class="title">Paneer Posting</p></li>
         </ul>
-    </ul>
-    <ul class="right-links">
-        <li class="dropdown">
-            <a href="#" class="icon">My Account</a>
-            <div class="dropdown-content">
-                <a href="signup">Sign Up</a>
-                <a href="login">Login</a>
-            </div>
-        </li>       
-        <li><a href="myprofile">Settings</a></li> 
-        <form action="/search" role="search" method="post">
-            <input type="search" name="searchQuery" id="searchInput" placeholder="Enter blog title or author name">
-            <button type="submit">Search</button>
-        </form>
-        
-    </ul>        
+        <ul class="right-links">
+            <li class="dropdown">
+                <a href="#" class="icon">My Account</a>
+                <div class="dropdown-content">
+                    <a href="signup">Sign Up</a>
+                    <a href="login">Login</a>
+
+                </div>
+            </li>
+            <li><a href="myprofile">Settings</a></li>
+            <li>
+                <form action="/search" role="search" method="post">
+                    <input type="search" name="searchQuery" id="searchInput" placeholder="Search..." style="height: 1px;">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </li>
+        </ul>
     </nav>
+    
   
     <div class="container">
         <% posts.forEach(post => { %>
@@ -200,12 +241,46 @@
                         <textarea name="commentContent" placeholder="Write your comment here..." rows="4" cols="50"></textarea>
                         <button type="submit">Submit Comment</button>
                     </form>
-                                        <button class="share-button">Share</button>
+                    <button class="shareButton">Share</button>
+    
+                    <!-- Popup container -->
+                    <div class="popup-container">
+                        <input class="link-input" type="text" readonly>
+                        <button class="copy-button">Copy Link</button>
+                    </div>
                 </div>
             </div>
         <% }) %>
     </div>
+    <script>
+        // Function to open the popup and display the current URL
+        function openPopup() {
+            const currentUrl = window.location.href;
+            const popupContainer = this.nextElementSibling; // Get the next sibling, which is the popup container
+            const linkInput = popupContainer.querySelector('.link-input');
+            linkInput.value = currentUrl;
+            popupContainer.style.display = 'block';
+        }
     
+        // Function to copy the link from the input field
+        function copyLink() {
+            const linkInput = this.parentElement.querySelector('.link-input');
+            linkInput.select();
+            document.execCommand('copy');
+            alert('Link copied to clipboard!');
+            this.parentElement.style.display = 'none';
+        }
+    
+        // Attach event listeners to all share buttons
+        document.querySelectorAll('.shareButton').forEach(button => {
+            button.addEventListener('click', openPopup);
+        });
+    
+        // Attach event listeners to all copy buttons
+        document.querySelectorAll('.copy-button').forEach(button => {
+            button.addEventListener('click', copyLink);
+        });
+    </script>
     
   
  </body>

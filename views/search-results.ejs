@@ -10,11 +10,40 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 </head>
 <body>
+    <nav>
+        <ul class="left-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="login">Explore</a></li>
+            <li><a href="login">Post Now</a></li>
+            <li><a href="aboutus">About us</a></li>
 
+        </ul>
+        <ul class="middle-links">
+            <li><p class="title">Paneer Posting</p></li>
+        </ul>
+        <ul class="right-links">
+            <li class="dropdown">
+                <a href="#" class="icon">My Account</a>
+                <div class="dropdown-content">
+                    <a href="signup">Sign Up</a>
+                    <a href="login">Login</a>
+
+                </div>
+            </li>
+            <li><a href="myprofile">Settings</a></li>
+            <li>
+                <form action="/search" role="search" method="post">
+                    <input type="search" name="searchQuery" id="searchInput" placeholder="Search..." style="height: 1px;">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+    
     <center>
     <div class="main">
         <h1 style="color: white; padding-top: 30px;">Search Results</h1>
-        <ul>
+        <ul style="color: white; padding-top: 30px;">
             <% results.forEach(result => { %>
                 <li>
                     <h2><%= result.title %></h2>
