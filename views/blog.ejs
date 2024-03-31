@@ -179,26 +179,34 @@
     </ul>        
     </nav>
   
- <div class="container">
-     <% posts.forEach(post => { %>
-         <div class="post-card">
-             <div class="post-header">
-                 <h2><%- post.title %></h2>
-                 <p>By <%- post.author %></p> <!-- Display author's name -->
-             </div>
-             <div class="post-content">
-                 <p><%- post.content %></p>
-                 <a href="#" class="continue-button">Continue Reading</a>
-             </div>
-             <br>
-             <div class="post-footer">
-                 <button class="like-button">Like</button>
-                 <button class="comment-button">Comment</button>
-                 <button class="share-button">Share</button>
-             </div>
-         </div>
-     <% }) %>
- </div>
+    <div class="container">
+        <% posts.forEach(post => { %>
+            <div class="post-card">
+                <div class="post-header">
+                    <h2><%- post.title %></h2>
+                    <p>By <%- post.author %></p>
+                </div>
+                <div class="post-content">
+                    <p><%- post.content %></p>
+                </div>
+                <br>
+                <div class="post-footer">
+                    <form id="likeForm" action="/like" method="post">
+                        <input type="hidden" name="postTitle" value="<%- post.title %>">
+                        <button type="submit" class="like-button">Like</button>
+                    </form>
+                    <form action="/comment" method="post">
+                        <input type="hidden" name="postTitle" value="<%- post.title %>">
+                        <textarea name="commentContent" placeholder="Write your comment here..." rows="4" cols="50"></textarea>
+                        <button type="submit">Submit Comment</button>
+                    </form>
+                                        <button class="share-button">Share</button>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+    
+    
   
  </body>
  </html>

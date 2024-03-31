@@ -78,8 +78,38 @@ router.post('/signup', (req, res) => {
         res.render('blog', { posts: results, layout: false }); // Merge the objects and pass them to res.render
     });
 });
+router.post('/like', (req, res) => {
+  const postTitle = req.body.postTitle;
 
+  // Update the likes count in the database based on the post title
+  const query = 'UPDATE Posts SET likes = likes + 1 WHERE title = ?';
+  connection.query(query, [postTitle], (error, results) => {
+      if (error) {
+          console.error('Error updating post likes:', error);
+          res.status(500).send('Error updating post likes');
+          return;
+      }
+      console.log('Post liked successfully');
 
+      // Show an alert using JavaScript
+      res.send('<script>alert("Post liked successfully"); window.location.href = "/blog";</script>');
+  });
+});
+router.post('/comment', (req, res) => {
+  const { commentContent, postId } = req.body;
+
+  // Insert the comment into the database
+  const query = 'INSERT INTO Comments (comment_content, post_id) VALUES (?, ?)';
+  connection.query(query, [commentContent, postId], (error, results) => {
+      if (error) {
+          console.error('Error inserting comment:', error);
+          res.status(500).send('Error inserting comment');
+          return;
+      }
+      console.log('Comment added successfully');
+      res.redirect('/blog');
+  });
+});
 
 
 
