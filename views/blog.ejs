@@ -147,6 +147,8 @@
      <title>Blogs</title>
      <link rel="stylesheet" href="/index.css">
      <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
      <style>
         /* Style for the popup container */
         .popup-container {
@@ -214,6 +216,7 @@
                 <form action="/search" role="search" method="post">
                     <input type="search" name="searchQuery" id="searchInput" placeholder="Search..." style="height: 1px;">
                     <button type="submit"><i class="fas fa-search"></i></button>
+                    
                 </form>
             </li>
         </ul>
@@ -221,7 +224,7 @@
     
     <div class="container">
         <% posts.forEach(post => { %>
-            <div class="post-card">
+            <div class="post-card" style="margin-bottom: 200px;">
                 <div class="post-header">
                     <h2><%- post.title %></h2>
                     <p>By <%- post.author %></p>
@@ -238,18 +241,19 @@
                 </div>
                 <br>
                 <div class="post-footer">
+
+                    
+                    <form action="/comment" method="post" style="padding-top: 70px;">
+                        <input type="hidden" name="postTitle" value="<%- post.title %>">
+                        <textarea name="commentContent" placeholder="Write your comment here..." rows="4" cols="50" style="border: solid 1px; border-radius: 5px;"></textarea>
+                        <button type="submit" class="like-button">Submit Comment</button>
+                    </form>
                     <form id="likeForm" action="/like" method="post">
                         <input type="hidden" name="postTitle" value="<%- post.title %>">
                         <button type="submit" class="like-button">Like</button>
                     </form>
-                    <form action="/comment" method="post">
-                        <input type="hidden" name="postTitle" value="<%- post.title %>">
-                        <textarea name="commentContent" placeholder="Write your comment here..." rows="4" cols="50"></textarea>
-                        <button type="submit">Submit Comment</button>
-                    </form>
-                    
-                    <button class="shareButton">Share</button>
-    
+                    <button class="shareButton like-button">Share</button>
+                
                     <!-- Popup container -->
                     <div class="popup-container">
                         <input class="link-input" type="text" readonly>

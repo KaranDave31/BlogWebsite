@@ -41,18 +41,25 @@
     </nav>
     
     <center>
-    <div class="main">
-        <h1 style="color: white; padding-top: 30px;">Search Results</h1>
-        <ul style="color: white; padding-top: 30px;">
+    <div class="container">
+        <h1 style="color: black; padding-top: 30px;">Search Results</h1>
+        <ul style="color: black; padding-top: 30px;">
+
             <% results.forEach(result => { %>
+                <div class="card" style="margin: 30px;">
                 <li>
                     <h2><%= result.title %></h2>
                     <p>By <%= result.author %></p>
                     <p><%= result.content %></p> <!-- Display content -->
                 </li>
+            </div>
             <% }); %>
+
         </ul>
     </div>
+
+
+
 </center>
 
 

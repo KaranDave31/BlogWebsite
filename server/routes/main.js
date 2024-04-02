@@ -3,7 +3,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 // const bcrypt = require('bcrypt');
-const nodemailer = require('nodemailer');
+// const nodemailer = require('nodemailer');
 
 
 

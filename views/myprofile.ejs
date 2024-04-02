@@ -46,7 +46,7 @@
 
 <!-- Profile Details -->
 <div class="main">
-    <h2 style="color: white;">Profile Details</h2>
+    <center><h2 style="color: white;">Profile Details</h2></center>
     <div class="container">
         <div class="card" style="height: auto;">
             <table style="font-size: large;">
@@ -79,15 +79,24 @@
                     <!-- Include other user details here -->
                 </tbody>
             </table>
-            <h2 style="color: white;">Your Posts</h2>
+            
+        </div>
+    </div>
+
+<center><h2 style="color: white;">Your Posts</h2></center>
+    
+    <div class="container">
+        <div class="card">
+
+            
             <% if (posts.length > 0) { %>
                 <% posts.forEach(post => { %>
-                    <div class="post-card">
-                        <div class="post-header">
+                    <div class="">
+                        <div class="">
                             <h2><%= post.title %></h2>
                             <p>By <%= post.author %></p>
                         </div>
-                        <div class="post-content">
+                        <div class="">
                             <p><%= post.content %></p>
                         </div>
                         <!-- Include other post details here -->
@@ -96,7 +105,9 @@
             <% } else { %>
                 <p>No posts found</p>
             <% } %>
+
         </div>
+
     </div>
     
     </div>
